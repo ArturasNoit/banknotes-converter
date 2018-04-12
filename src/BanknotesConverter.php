@@ -7,7 +7,7 @@ class BanknotesConverter
 
     public function minCount($amount)
     {
-      $amount = preg_replace('/\s+/', '', $amount);
+      $amount = $this->removeWhitespaces($amount);
       $this->guardAgainstNegativeAmount($amount);
       $this->guardAgainstInvalidAmount($amount);
 
@@ -39,6 +39,11 @@ class BanknotesConverter
     private function guardAgainstNegativeAmount($amount)
     {
         if ($amount < 0) throw new InvalidArgumentException("Negative amount provided: {$amount}");
+    }
+
+    private function removeWhitespaces($amount)
+    {
+        return preg_replace('/\s+/', '', $amount);
     }
 
 
