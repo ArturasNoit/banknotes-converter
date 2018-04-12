@@ -15,17 +15,11 @@ class BanknotesConverter
 
       for ($i=0; $i <count(self::$denominations) ; $i++) {
 
-
-        while ($amount > 0) {
-
-          if ($amount >= self::$denominations[$i]) {
+          while ($amount >= self::$denominations[$i]) {
             $amount -= self::$denominations[$i];
             $minCount += 1;
-          } else {
-            break;
           }
-
-        }
+          
       }
 
         return $minCount;
@@ -43,7 +37,11 @@ class BanknotesConverter
 
     private function removeWhitespaces($amount)
     {
-        return preg_replace('/\s+/', '', $amount);
+        if (is_string($amount)) {
+          return preg_replace('/\s+/', '', $amount);
+        }else {
+          return $amount;
+        }
     }
 
 
