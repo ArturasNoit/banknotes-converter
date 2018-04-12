@@ -8,8 +8,8 @@ class BanknotesConverter
     public function minCount($amount)
     {
       $amount = preg_replace('/\s+/', '', $amount);
-      if ($amount < 0) throw new InvalidArgumentException("Negative amount provided: {$amount}");
-      if (!is_numeric($amount ) || is_float($amount + 0)) throw new InvalidArgumentException("Amount provided is not valid: {$amount}");
+      $this->guardAgainstNegativeAmount($amount);
+      $this->guardAgainstInvalidAmount($amount);
 
       $minCount = 0;
 
@@ -29,6 +29,16 @@ class BanknotesConverter
       }
 
         return $minCount;
+    }
+
+    private function guardAgainstInvalidAmount($amount)
+    {
+        if (!is_numeric($amount ) || is_float($amount + 0)) throw new InvalidArgumentException("Amount provided is not valid: {$amount}");
+    }
+
+    private function guardAgainstNegativeAmount($amount)
+    {
+        if ($amount < 0) throw new InvalidArgumentException("Negative amount provided: {$amount}");
     }
 
 
