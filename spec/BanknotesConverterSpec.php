@@ -23,6 +23,11 @@ class BanknotesConverterSpec extends ObjectBehavior
         $this->minCount(1)->shouldReturn(1);
     }
 
+    function it_counts_3_to_3_minimum_denomination_unit()
+    {
+        $this->minCount(3)->shouldReturn(3);
+    }
+
     function it_counts_5_to_1_minimum_denomination_unit()
     {
         $this->minCount(5)->shouldReturn(1);
@@ -46,6 +51,11 @@ class BanknotesConverterSpec extends ObjectBehavior
     function it_counts_10_to_1_minimum_denomination_unit()
     {
         $this->minCount(10)->shouldReturn(1);
+    }
+
+    function it_counts_496_to_7_minimum_denomination_units()
+    {
+        $this->minCount(496)->shouldReturn(7);
     }
 
     function it_counts_1999_to_13_minimum_denomination_units()
