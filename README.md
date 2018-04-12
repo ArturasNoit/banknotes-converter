@@ -1,6 +1,6 @@
 # Banknotes Converter
 
-Banknotes converter class with one fully working method. It takes value and converts them to minimum amount of banknote units needed.
+Banknotes converter class with one fully working method. It takes value and converts it to minimum amount of banknote units needed.
 
 First time I tried to test code outside laravel, so I found phpspec tool. 
 Code is written using TDD, so tests first, later code and refactoring.
